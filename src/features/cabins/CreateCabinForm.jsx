@@ -75,6 +75,7 @@ function CreateCabinForm({ cabinToEdit = {}, onCloseModal }) {
           disabled={isWorking}
           {...register("maxCapacity", {
             required: "This field is required",
+            valueAsNumber: true,
             min: {
               value: 1,
               message: "Capacity should be at least 1",
