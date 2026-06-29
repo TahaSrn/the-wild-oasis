@@ -2,6 +2,7 @@ import styled from "styled-components";
 import LoginForm from "../features/authentication/LoginForm";
 import Logo from "../ui/Logo";
 import Heading from "../ui/Heading";
+import { media } from "../styles/breakpoints";
 
 const LoginLayout = styled.main`
   min-height: 100vh;
@@ -11,6 +12,12 @@ const LoginLayout = styled.main`
   justify-content: center;
   gap: 3.2rem;
   background-color: var(--color-grey-50);
+
+  ${media.tablet} {
+    grid-template-columns: 1fr;
+    padding: 2.4rem 1.6rem;
+    gap: 2.4rem;
+  }
 `;
 
 function Login() {

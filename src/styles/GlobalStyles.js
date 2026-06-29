@@ -124,6 +124,13 @@ body {
   min-height: 100vh;
   line-height: 1.5;
   font-size: 1.6rem;
+  overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 56.25%;
+  }
 }
 
 input,
@@ -187,6 +194,65 @@ img {
   /* For dark mode */
   filter: grayscale(var(--image-grayscale)) opacity(var(--image-opacity));
 }
+
+/* ============================================ */
+/* CUSTOM SCROLLBAR STYLING - راه‌حل نهایی */
+/* ============================================ */
+
+/* پنهان کردن اسکرول‌بار پیش‌فرض ویندوز */
+body {
+  overflow-y: overlay;
+}
+
+/* برای کروم، سافاری، اج و اپرا */
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  background: transparent !important;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent !important;
+  border-radius: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--color-brand-500) !important;
+  border-radius: 10px;
+  border: 2px solid var(--color-grey-0) !important;
+  transition: background 0.3s ease;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--color-brand-700) !important;
+}
+
+/* برای فایرفاکس */
+* {
+  scrollbar-width: thin !important;
+  scrollbar-color: var(--color-brand-500) transparent !important;
+}
+
+/* حالت دارک مود برای اسکرول‌بار */
+.dark-mode *::-webkit-scrollbar-thumb {
+  background: var(--color-brand-600) !important;
+  border-color: var(--color-grey-800) !important;
+}
+
+.dark-mode *::-webkit-scrollbar-thumb:hover {
+  background: var(--color-brand-400) !important;
+}
+
+.dark-mode * {
+  scrollbar-color: var(--color-brand-600) transparent !important;
+}
+
+/* برای اسکرول‌بارهایی که داخل المنت‌ها هستن */
+*::-webkit-scrollbar-corner {
+  background: transparent !important;
+}
+
+/* ============================================ */
 
 /*
 FOR DARK MODE

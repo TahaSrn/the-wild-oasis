@@ -1,5 +1,6 @@
 import { createContext, useContext } from "react";
 import styled from "styled-components";
+import { media } from "../styles/breakpoints";
 
 const StyledTable = styled.div`
   border: 1px solid var(--color-grey-200);
@@ -8,6 +9,11 @@ const StyledTable = styled.div`
   background-color: var(--color-grey-0);
   border-radius: 7px;
   overflow: hidden;
+
+  ${media.tablet} {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
 `;
 
 const CommonRow = styled.div`
@@ -16,6 +22,11 @@ const CommonRow = styled.div`
   column-gap: 2.4rem;
   align-items: center;
   transition: none;
+
+  ${media.tablet} {
+    min-width: 72rem;
+    column-gap: 1.6rem;
+  }
 `;
 
 const StyledHeader = styled(CommonRow)`
@@ -27,6 +38,10 @@ const StyledHeader = styled(CommonRow)`
   letter-spacing: 0.4px;
   font-weight: 600;
   color: var(--color-grey-600);
+
+  ${media.tablet} {
+    padding: 1.2rem 1.6rem;
+  }
 `;
 
 const StyledRow = styled(CommonRow)`
@@ -34,6 +49,10 @@ const StyledRow = styled(CommonRow)`
 
   &:not(:last-child) {
     border-bottom: 1px solid var(--color-grey-100);
+  }
+
+  ${media.tablet} {
+    padding: 1.2rem 1.6rem;
   }
 `;
 

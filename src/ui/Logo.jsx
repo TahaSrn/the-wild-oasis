@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { useDarkMode } from "../context/DarkModeContext";
+import { media } from "../styles/breakpoints";
 
 const StyledLogo = styled.div`
   text-align: center;
@@ -8,6 +9,10 @@ const StyledLogo = styled.div`
 const Img = styled.img`
   height: 9.6rem;
   width: auto;
+
+  ${media.tablet} {
+    height: 7.2rem;
+  }
 `;
 
 function Logo() {

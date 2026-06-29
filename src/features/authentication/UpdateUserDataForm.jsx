@@ -70,10 +70,11 @@ function UpdateUserDataForm() {
           variation="secondary"
           disabled={isUpdating}
           onClick={handleCancel}
+          size="small"
         >
           Cancel
         </Button>
-        <Button disabled={isUpdating} variation="primary">
+        <Button disabled={isUpdating} size="small" variation="primary">
           Update account
         </Button>
       </FormRow>

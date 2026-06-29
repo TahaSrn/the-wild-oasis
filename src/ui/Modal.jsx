@@ -3,6 +3,7 @@ import { createPortal } from "react-dom";
 import { HiXMark } from "react-icons/hi2";
 import styled from "styled-components";
 import useOutsideClick from "../hooks/useOutsideClick";
+import { media } from "../styles/breakpoints";
 
 const StyledModal = styled.div`
   position: fixed;
@@ -14,6 +15,15 @@ const StyledModal = styled.div`
   box-shadow: var(--shadow-lg);
   padding: 3.2rem 4rem;
   transition: all 0.5s;
+  max-height: 90vh;
+  overflow-y: auto;
+  width: auto;
+  max-width: calc(100vw - 3.2rem);
+
+  ${media.tablet} {
+    padding: 2.4rem 2rem;
+    max-width: calc(100vw - 2.4rem);
+  }
 `;
 
 const Overlay = styled.div`

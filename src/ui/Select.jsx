@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { media } from "../styles/breakpoints";
 
 const StyledSelect = styled.select`
   font-size: 1.4rem;
@@ -12,6 +13,10 @@ const StyledSelect = styled.select`
   background-color: var(--color-grey-0);
   font-weight: 500;
   box-shadow: var(--shadow-sm);
+
+  ${media.tablet} {
+    max-width: 100%;
+  }
 `;
 
 function Select({ options, value, onChange, ...props }) {

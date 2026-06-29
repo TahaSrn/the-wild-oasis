@@ -1,7 +1,7 @@
 import styled from "styled-components";
+import { media } from "../../styles/breakpoints";
 
 const StyledStat = styled.div`
-  /* Box */
   background-color: var(--color-grey-0);
   border: 1px solid var(--color-grey-100);
   border-radius: var(--border-radius-md);
@@ -12,6 +12,12 @@ const StyledStat = styled.div`
   grid-template-rows: auto auto;
   column-gap: 1.6rem;
   row-gap: 0.4rem;
+
+  ${media.tablet} {
+    grid-template-columns: 4.8rem 1fr;
+    column-gap: 1.2rem;
+    padding: 1.2rem;
+  }
 `;
 
 const Icon = styled.div`
@@ -45,6 +51,10 @@ const Value = styled.p`
   font-size: 2.4rem;
   line-height: 1;
   font-weight: 500;
+
+  ${media.tablet} {
+    font-size: 2rem;
+  }
 `;
 
 function Stat({ icon, title, value, color }) {

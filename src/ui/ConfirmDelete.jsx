@@ -1,12 +1,17 @@
 import styled from "styled-components";
 import Button from "./Button";
 import Heading from "./Heading";
+import { media } from "../styles/breakpoints";
 
 const StyledConfirmDelete = styled.div`
   width: 40rem;
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
+
+  ${media.tablet} {
+    width: 100%;
+  }
 
   & p {
     color: var(--color-grey-500);
@@ -17,6 +22,10 @@ const StyledConfirmDelete = styled.div`
     display: flex;
     justify-content: flex-end;
     gap: 1.2rem;
+
+    ${media.tablet} {
+      flex-wrap: wrap;
+    }
   }
 `;
 

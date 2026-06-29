@@ -2,12 +2,19 @@ import { HiChevronLeft, HiChevronRight } from "react-icons/hi2";
 import { useSearchParams } from "react-router";
 import styled from "styled-components";
 import { PAGE_SIZE } from "../utils/constants";
+import { media } from "../styles/breakpoints";
 
 const StyledPagination = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  ${media.tablet} {
+    flex-direction: column;
+    gap: 1.2rem;
+    align-items: stretch;
+  }
 `;
 
 const P = styled.p`
@@ -22,6 +29,10 @@ const P = styled.p`
 const Buttons = styled.div`
   display: flex;
   gap: 0.6rem;
+
+  ${media.tablet} {
+    justify-content: center;
+  }
 `;
 
 const PaginationButton = styled.button`

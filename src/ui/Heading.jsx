@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { media } from "../styles/breakpoints";
 
 const Heading = styled.h1`
   ${(props) =>
@@ -6,6 +7,10 @@ const Heading = styled.h1`
     css`
       font-size: 3rem;
       font-weight: 600;
+
+      ${media.tablet} {
+        font-size: 2.4rem;
+      }
     `}
 
   ${(props) =>
@@ -13,6 +18,10 @@ const Heading = styled.h1`
     css`
       font-size: 2rem;
       font-weight: 600;
+
+      ${media.tablet} {
+        font-size: 1.8rem;
+      }
     `}
 
 
@@ -21,6 +30,10 @@ const Heading = styled.h1`
     css`
       font-size: 2rem;
       font-weight: 500;
+
+      ${media.tablet} {
+        font-size: 1.8rem;
+      }
     `}
 
   ${(props) =>
@@ -29,6 +42,10 @@ const Heading = styled.h1`
       font-size: 3rem;
       font-weight: 600;
       text-align: center;
+
+      ${media.tablet} {
+        font-size: 2.4rem;
+      }
     `}
 `;
 export default Heading;

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Logo from "./Logo";
 import MainNav from "./MainNav";
-import Uploader from "../data/Uploader";
+import { media } from "../styles/breakpoints";
 
 const StyledSidebar = styled.aside`
   background-color: var(--color-grey-0);
@@ -12,6 +12,23 @@ const StyledSidebar = styled.aside`
   display: flex;
   flex-direction: column;
   gap: 3.2rem;
+
+  ${media.tablet} {
+    grid-row: 3;
+    grid-column: 1;
+    flex-direction: row;
+    align-items: center;
+    gap: 0;
+    padding: 0.8rem 1.2rem;
+    border-right: none;
+    border-top: 1px solid var(--color-grey-100);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+
+    & > div:first-child {
+      display: none;
+    }
+  }
 `;
 
 function Sidebar() {
@@ -19,8 +36,6 @@ function Sidebar() {
     <StyledSidebar>
       <Logo />
       <MainNav />
-
-      <Uploader />
     </StyledSidebar>
   );
 }

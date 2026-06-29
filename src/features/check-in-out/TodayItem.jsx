@@ -1,4 +1,10 @@
 import styled from "styled-components";
+import Tag from "../../ui/Tag";
+import { Flag } from "../../ui/Flag";
+import { Link } from "react-router";
+import Button from "../../ui/Button";
+import CheckoutButton from "./CheckoutButton";
+import { media } from "../../styles/breakpoints";
 
 const StyledTodayItem = styled.li`
   display: grid;
@@ -13,8 +19,75 @@ const StyledTodayItem = styled.li`
   &:first-child {
     border-top: 1px solid var(--color-grey-100);
   }
+
+  ${media.tablet} {
+    grid-template-columns: auto 2rem 1fr auto;
+    gap: 0.8rem;
+    font-size: 1.3rem;
+
+    & > div:nth-child(4) {
+      display: none;
+    }
+  }
+
+  ${media.mobile} {
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    gap: 0.8rem;
+
+    & > *:nth-child(1) {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    & > *:nth-child(2) {
+      grid-column: 1;
+      grid-row: 2;
+    }
+
+    & > *:nth-child(3) {
+      grid-column: 1;
+      grid-row: 3;
+    }
+
+    & > *:nth-child(5) {
+      grid-column: 2;
+      grid-row: 1 / -1;
+      align-self: center;
+    }
+  }
 `;
 
 const Guest = styled.div`
   font-weight: 500;
 `;
+
+function TodayItem({ activity }) {
+  const { id, status, guests, numNights } = activity;
+
+  return (
+    <StyledTodayItem>
+      {status === "unconfirmed" && <Tag type="green">Arriving</Tag>}
+      {status === "checked-in" && <Tag type="blue">Departing</Tag>}
+
+      <Flag src={guests.countryFlag} alt={`Flag of ${guests.country}`} />
+      <Guest>{guests.fullName}</Guest>
+      <div>{numNights} nights</div>
+
+      {status === "unconfirmed" && (
+        <Button
+          size="small"
+          variation="primary"
+          as={Link}
+          to={`/checkin/${id}`}
+        >
+          Check in
+        </Button>
+      )}
+
+      {status === "checked-in" && <CheckoutButton bookingId={id} />}
+    </StyledTodayItem>
+  );
+}
+
+export default TodayItem;

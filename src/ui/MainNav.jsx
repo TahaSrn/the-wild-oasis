@@ -7,11 +7,19 @@ import {
 } from "react-icons/hi2";
 import { NavLink } from "react-router";
 import styled from "styled-components";
+import { media } from "../styles/breakpoints";
 
 const NavList = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
+
+  ${media.tablet} {
+    flex-direction: row;
+    gap: 0.4rem;
+    width: 100%;
+    justify-content: space-around;
+  }
 `;
 
 const StyledNavLink = styled(NavLink)`
@@ -51,11 +59,43 @@ const StyledNavLink = styled(NavLink)`
   &.active:visited svg {
     color: var(--color-brand-600);
   }
+
+  ${media.tablet} {
+    &:link,
+    &:visited {
+      padding: 0.8rem 1.2rem;
+      font-size: 1.2rem;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    & span {
+      font-size: 1rem;
+    }
+  }
+
+  ${media.mobile} {
+    &:link,
+    &:visited {
+      padding: 0.8rem;
+    }
+
+    & span {
+      display: none;
+    }
+  }
+`;
+
+const Nav = styled.nav`
+  ${media.tablet} {
+    flex: 1;
+    width: 100%;
+  }
 `;
 
 function MainNav() {
   return (
-    <nav>
+    <Nav>
       <NavList>
         <li>
           <StyledNavLink to="./dashboard">
@@ -88,7 +128,7 @@ function MainNav() {
           </StyledNavLink>
         </li>
       </NavList>
-    </nav>
+    </Nav>
   );
 }
 

@@ -12,14 +12,21 @@ import {
   YAxis,
 } from "recharts";
 import { eachDayOfInterval, format, isSameDay, subDays } from "date-fns";
+import { media } from "../../styles/breakpoints";
 
 const StyledSalesChart = styled(DashboardBox)`
   grid-column: 1 / -1;
 
-  /* Hack to change grid line colors */
   & .recharts-cartesian-grid-horizontal line,
   & .recharts-cartesian-grid-vertical line {
     stroke: var(--color-grey-300);
+  }
+
+  ${media.tablet} {
+    & h2 {
+      font-size: 1.6rem;
+      line-height: 1.4;
+    }
   }
 `;
 

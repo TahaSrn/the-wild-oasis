@@ -11,9 +11,9 @@ import DataItem from "../../ui/DataItem";
 import { Flag } from "../../ui/Flag";
 
 import { formatDistanceFromNow, formatCurrency } from "../../utils/helpers";
+import { media } from "../../styles/breakpoints";
 
 const StyledBookingDataBox = styled.section`
-  /* Box */
   background-color: var(--color-grey-0);
   border: 1px solid var(--color-grey-100);
   border-radius: var(--border-radius-md);
@@ -49,10 +49,34 @@ const Header = styled.header`
     font-size: 2rem;
     margin-left: 4px;
   }
+
+  ${media.tablet} {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.2rem;
+    padding: 1.6rem 2rem;
+    font-size: 1.6rem;
+
+    & div:first-child {
+      font-size: 1.6rem;
+    }
+
+    & span {
+      font-size: 1.6rem;
+    }
+
+    & p:last-child {
+      font-size: 1.4rem;
+    }
+  }
 `;
 
 const Section = styled.section`
   padding: 3.2rem 4rem 1.2rem;
+
+  ${media.tablet} {
+    padding: 2rem 1.6rem 1.2rem;
+  }
 `;
 
 const Guest = styled.div`
@@ -65,6 +89,10 @@ const Guest = styled.div`
   & p:first-of-type {
     font-weight: 500;
     color: var(--color-grey-700);
+  }
+
+  ${media.tablet} {
+    flex-wrap: wrap;
   }
 `;
 
@@ -92,6 +120,13 @@ const Price = styled.div`
     width: 2.4rem;
     color: currentColor !important;
   }
+
+  ${media.tablet} {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.2rem;
+    padding: 1.6rem 2rem;
+  }
 `;
 
 const Footer = styled.footer`
@@ -99,6 +134,11 @@ const Footer = styled.footer`
   font-size: 1.2rem;
   color: var(--color-grey-500);
   text-align: right;
+
+  ${media.tablet} {
+    padding: 1.6rem 2rem;
+    text-align: left;
+  }
 `;
 
 // A purely presentational component

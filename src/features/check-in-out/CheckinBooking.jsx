@@ -15,13 +15,17 @@ import Checkbox from "../../ui/Checkbox";
 import { formatCurrency } from "../../utils/helpers";
 import { useCheckin } from "./useCheckin";
 import { useSettings } from "../settings/useSettings";
+import { media } from "../../styles/breakpoints";
 
 const Box = styled.div`
-  /* Box */
   background-color: var(--color-grey-0);
   border: 1px solid var(--color-grey-100);
   border-radius: var(--border-radius-md);
   padding: 2.4rem 4rem;
+
+  ${media.tablet} {
+    padding: 2rem 1.6rem;
+  }
 `;
 
 function CheckinBooking() {

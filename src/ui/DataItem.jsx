@@ -1,10 +1,17 @@
 import styled from "styled-components";
+import { media } from "../styles/breakpoints";
 
 const StyledDataItem = styled.div`
   display: flex;
   align-items: center;
   gap: 1.6rem;
   padding: 0.8rem 0;
+
+  ${media.tablet} {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+  }
 `;
 
 const Label = styled.span`

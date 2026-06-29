@@ -9,9 +9,9 @@ import {
   Tooltip,
 } from "recharts";
 import { useDarkMode } from "../../context/DarkModeContext";
+import { media } from "../../styles/breakpoints";
 
 const ChartBox = styled.div`
-  /* Box */
   background-color: var(--color-grey-0);
   border: 1px solid var(--color-grey-100);
   border-radius: var(--border-radius-md);
@@ -25,6 +25,16 @@ const ChartBox = styled.div`
 
   & .recharts-pie-label-text {
     font-weight: 600;
+  }
+
+  ${media.tablet} {
+    grid-column: 1 / -1;
+    padding: 2rem 1.6rem;
+
+    & .recharts-legend-wrapper {
+      position: static !important;
+      width: 100% !important;
+    }
   }
 `;
 
@@ -115,8 +125,6 @@ const startDataDark = [
 ];
 
 function prepareData(startData, stays) {
-  // A bit ugly code, but sometimes this is what it takes when working with real data 😅
-
   function incArrayValue(arr, field) {
     return arr.map((obj) =>
       obj.duration === field ? { ...obj, value: obj.value + 1 } : obj,
@@ -145,35 +153,41 @@ function DurationChart({ confirmedStays }) {
   const { isDarkMode } = useDarkMode();
   const startData = isDarkMode ? startDataDark : startDataLight;
   const data = prepareData(startData, confirmedStays);
+
+  const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
   return (
     <ChartBox>
       <Heading as="h2">Stay duration summary</Heading>
-      <ResponsiveContainer width="100%" height={240}>
+
+      <ResponsiveContainer width="100%" height={isMobile ? 320 : 240}>
         <PieChart>
           <Pie
             data={data}
             nameKey="duration"
             dataKey="value"
-            innerRadius={85}
-            outerRadius={110}
-            cx="40%"
+            innerRadius={isMobile ? 90 : 85}
+            outerRadius={isMobile ? 120 : 110}
+            cx={isMobile ? "50%" : "40%"}
             cy="50%"
             paddingAngle={3}
           >
             {data.map((entry) => (
               <Cell
+                key={entry.duration}
                 fill={entry.color}
                 stroke={entry.color}
-                key={entry.duration}
               />
             ))}
           </Pie>
+
           <Tooltip />
+
           <Legend
-            verticalAlign="middle"
-            align="right"
-            width="30%"
-            layout="vertical"
+            verticalAlign={isMobile ? "bottom" : "middle"}
+            align={isMobile ? "center" : "right"}
+            width={isMobile ? "100%" : "30%"}
+            layout={isMobile ? "horizontal" : "vertical"}
             iconSize={15}
             iconType="circle"
           />
