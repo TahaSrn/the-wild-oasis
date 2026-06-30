@@ -3,7 +3,6 @@
 A modern hotel management dashboard built with React.  
 This application allows hotel staff to manage cabins, bookings, guests, and users through a clean and intuitive interface.
 
-![Dashboard Preview](./public/dashboard-preview.png)
 
 ## ✨ Features
 
